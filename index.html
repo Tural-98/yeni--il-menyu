@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Way Hotel  Qala Gecэsi Paketlэri</title>
+<style>
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  background: #2a2a2a;
+  color: #fff;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Qar effekti */
+.snowflake {
+  position: fixed;
+  top: -10px;
+  color: white;
+  user-select: none;
+  pointer-events: none;
+  font-size: 12px;
+  z-index: 9999; /* Qar h?mis? ust qatda */
+  animation-name: fall;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+@keyframes fall {
+  0% { transform: translateY(0) translateX(0); }
+  100% { transform: translateY(100vh) translateX(20px); }
+}
+
+/* Fireworks canvas */
+#fireworks {
+  position: fixed;
+  top:0;
+  left:0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1; /* arxa planda */
+}
+
+/* Header */
+header {
+  text-align: center;
+  padding: 30px 15px;
+  background: linear-gradient(135deg, #8b0000, #c00000);
+  color: white;
+  position: relative;
+}
+
+header img {
+  max-width: 150px; 
+  display: block; 
+  margin: 0 auto 10px auto;
+  border-radius: 50%;
+  border: 3px solid #fff;
+  box-shadow: 0 0 15px rgba(255,255,255,0.7);
+}
+
+/* Sections */
+section {
+  width: 95%;
+  max-width: 450px; /* Telefon ucun optimal */
+  margin: 20px auto;
+  background: #3a3a3a;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+}
+
+h2 {
+  color: #ff4d4d;
+  margin-bottom: 12px;
+  border-left: 4px solid #ff4d4d;
+  padding-left: 8px;
+  font-size: 18px;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 10px 0;
+}
+
+ul li {
+  padding: 4px 0;
+  border-bottom: 1px dashed #777;
+  font-size: 14px;
+}
+
+.star {
+  margin-top: 12px;
+  font-size: 16px;
+  font-weight: 700;
+  color: #ff3333;
+}
+
+.price {
+  font-weight: bold;
+  margin-top: 3px;
+  font-size: 14px;
+}
+
+.gallery {
+  display: grid;
+  direction: rtl; /* sagdan sola */
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 8px;
+  margin-bottom: 15px;
+}
+
+.gallery .img-box {
+  width: 100%;
+  height: 100px;
+  background: #555;
+  border-radius: 8px;
+  border: 1px solid #777;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ccc;
+  font-size: 12px;
+  text-align: center;
+}
+
+footer {
+  text-align: center;
+  padding: 15px;
+  color: #bbb;
+  font-size: 12px;
+}
+</style>
+</head>
+<body>
+
+<header>
+  <!-- Saxta Baba s?kli -->
+  <img src="image/snow.jpg" alt="Saxta Baba">
+  <h1> My Way Hotel Village  Qala Gecəsi Paketləri</h1>
+  <p> Yeni il gecəsi üçün xüsusi proqram və zəngin menyu </p>
+</header>
+
+<!-- Fireworks canvas -->
+<canvas id="fireworks"></canvas>
+
+<section>
+  <h2>Otaq Paketləri</h2>
+  <div class="star">Standart Kotteclər  2 nəfərlik</div>
+  <ul>
+    <li>Səhər yeməyi + Qala gecəsi + SPA</li>
+    <li class="price">1 gün  900 AZN</li>
+    <li class="price">2 gün  1700 AZN</li>
+  </ul>
+
+  <div class="star"> Dublex Kotteclər  2 nəfərlik</div>
+  <ul>
+    <li>Səhər yeməyi + Qala gecəsi + SPA</li>
+    <li class="price">1 gün  950 AZN</li>
+    <li class="price">2 gün  1800 AZN</li>
+  </ul>
+
+  <div class="star"> Family Kotteclər  4 nəfərlik</div>
+  <ul>
+    <li>Səhər yeməyi + Qala gecəsi + SPA</li>
+    <li class="price">1 gün  1100 AZN</li>
+    <li class="price">2 gün  1900 AZN</li>
+  </ul>
+</section>
+
+<section>
+  <h2> Soyuq Qəlyanaltılar</h2>
+  <div class="gallery">
+    
+    
+    
+ </div>
+  <ul>
+    <li>Pendir assorti</li>
+    <li>Pomidor, xiyar, göyərti</li>
+    <li>Turşu assorti</li>
+    <li>Ət assorti</li>
+    <li>Blinçik (ət ilə)</li>
+    <li>Paytaxt salatı</li>
+    <li>Manqal salatı</li>
+    <li>Mimoza salatı</li>
+    <li>Albal? salatı</li>
+    <li>Suxarılanmiş badımcan</li>
+    <li>Qırmızı ikra</li>
+  </ul>
+</section>
+
+<section>
+  <h2>Isti Qəlyanaltı</h2>
+  <div class="gallery">
+    
+  </div>
+  <ul>
+    <li>Yarpaq dolması</li>
+  </ul>
+</section>
+
+<section>
+  <h2> Isti Yeməklər</h2>
+  <div class="gallery">
+   
+  </div>
+  <ul>
+    <li>Lulə kabab</li>
+    <li>Tike kabab</li>
+    <li>Toyuq kababə</li>
+    <li>Hinduska kababə</li>
+    <li>T?r?v?z kababı</li>
+    <li>Kartof quyruq</li>
+    <li>Turşu qovurmalı plov</li>
+  </ul>
+</section>
+
+<section>
+  <h2> Içkilər</h2>
+  <ul>
+    <li>Qazlı və qazsız su</li>
+    <li>Kompot</li>
+    <li>Limonad</li>
+    <li>Coca-Cola</li>
+    <li>Şampan, şərab və ya araq</li>
+  </ul>
+</section>
+
+<section>
+  <h2> Desert</h2>
+  <ul>
+    <li>Meyvə assorti</li>
+    <li>Çay və mürəbbə</li>
+  </ul>
+</section>
+
+<footer>
+  2025 My Way Hotel Village Yeni il Qala Gecəsi<li>Tural Mammadli</li><li>Sayt müəllif hüquqları ilə qorunur </li><li>Tel:+994509911322</li>
+</footer>
+
+<script>
+// Qar effekti
+const maxFlakes = 120;
+for (let i=0;i<maxFlakes;i++){
+  const flake = document.createElement("div");
+  flake.classList.add("snowflake");
+  flake.style.left = Math.random()*window.innerWidth+"px";
+  flake.style.fontSize = 10 + Math.random()*10 + "px";
+  flake.style.opacity = Math.random();
+  flake.style.animationDuration = 5 + Math.random()*5 + "s";
+  flake.innerHTML = "&#10052;";
+  document.body.appendChild(flake);
+}
+
+// Fireworks
+const canvas = document.getElementById('fireworks');
+const ctx = canvas.getContext('2d');
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+class Particle {
+  constructor(x,y,color){
+    this.x=x; this.y=y; this.color=color;
+    this.vx=(Math.random()-0.5)*6;
+    this.vy=(Math.random()-0.5)*6;
+    this.alpha=1; this.size=Math.random()*3+1;
+  }
+  update(){ this.x+=this.vx; this.y+=this.vy; this.alpha-=0.02; }
+  draw(){ ctx.globalAlpha=this.alpha; ctx.fillStyle=this.color; ctx.beginPath();
+    ctx.arc(this.x,this.y,this.size,0,2*Math.PI); ctx.fill(); }
+}
+
+let particles=[];
+function spawnFirework(){
+  const x=Math.random()*canvas.width;
+  const y=Math.random()*canvas.height/2;
+  const colors=["#ff4d4d","#ffcc00","#ffffff","#33ff33","#33ccff"];
+  for(let i=0;i<50;i++){
+    particles.push(new Particle(x,y,colors[Math.floor(Math.random()*colors.length)]));
+  }
+}
+
+function animate(){
+  ctx.clearRect(0,0,canvas.width,canvas.height); // Fireworks s?ffaf saxlay?r
+  for(let i=particles.length-1;i>=0;i--){
+    particles[i].update();
+    particles[i].draw();
+    if(particles[i].alpha<=0) particles.splice(i,1);
+  }
+  requestAnimationFrame(animate);
+}
+setInterval(spawnFirework,1500);
+animate();
+</script>
+
+</body>
+</html>
