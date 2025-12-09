@@ -3,15 +3,20 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>My Way Hotel  Qala Gecэsi Paketlэri</title>
+<title>My Way Hotel Qala Gecəsi Paketləri</title>
+<!-- Font Awesome for fancy icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
 <style>
 body {
   margin: 0;
   font-family: "Poppins", sans-serif;
-  background: #2a2a2a;
+  background: linear-gradient(135deg, #1a1a2e, #16213e);
   color: #fff;
   overflow-x: hidden;
   position: relative;
+  min-height: 100vh;
 }
 
 /* Qar effekti */
@@ -22,15 +27,15 @@ body {
   user-select: none;
   pointer-events: none;
   font-size: 12px;
-  z-index: 9999; /* Qar h?mis? ust qatda */
+  z-index: 9999;
   animation-name: fall;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
 }
 
 @keyframes fall {
-  0% { transform: translateY(0) translateX(0); }
-  100% { transform: translateY(100vh) translateX(20px); }
+  0% { transform: translateY(0) translateX(0) rotate(0deg); opacity: 0.8; }
+  100% { transform: translateY(100vh) translateX(20px) rotate(360deg); opacity: 0; }
 }
 
 /* Fireworks canvas */
@@ -41,7 +46,52 @@ body {
   width: 100%;
   height: 100%;
   pointer-events: none;
-  z-index: 1; /* arxa planda */
+  z-index: 1;
+}
+
+/* Music Player */
+.music-player {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 10000;
+  background: rgba(0,0,0,0.7);
+  border-radius: 50px;
+  padding: 10px 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  backdrop-filter: blur(10px);
+  border: 2px solid #ff4d4d;
+  box-shadow: 0 0 15px rgba(255,77,77,0.5);
+}
+
+.music-btn {
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  transition: all 0.3s;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.music-btn:hover {
+  background: rgba(255,77,77,0.3);
+  transform: scale(1.1);
+}
+
+.music-title {
+  font-size: 12px;
+  max-width: 150px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 /* Header */
@@ -51,34 +101,101 @@ header {
   background: linear-gradient(135deg, #8b0000, #c00000);
   color: white;
   position: relative;
+  overflow: hidden;
+  border-bottom: 5px solid #ffcc00;
+}
+
+header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 5px;
+  background: linear-gradient(90deg, #ff0000, #ff9900, #ffff00, #00ff00, #00ffff, #0000ff, #ff00ff);
+  animation: rainbow 5s linear infinite;
+}
+
+@keyframes rainbow {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
 }
 
 header img {
-  max-width: 150px; 
-  display: block; 
+  max-width: 180px;
+  display: block;
   margin: 0 auto 10px auto;
   border-radius: 50%;
-  border: 3px solid #fff;
-  box-shadow: 0 0 15px rgba(255,255,255,0.7);
+  border: 4px solid #fff;
+  box-shadow: 0 0 25px rgba(255,255,255,0.9);
+  animation: pulse 3s infinite;
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 15px rgba(255,255,255,0.7); }
+  50% { box-shadow: 0 0 30px rgba(255,255,255,1); }
+  100% { box-shadow: 0 0 15px rgba(255,255,255,0.7); }
+}
+
+header h1 {
+  font-family: 'Dancing Script', cursive;
+  font-size: 2.5rem;
+  margin: 10px 0;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+header p {
+  font-size: 1.1rem;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 10px;
+  background: rgba(0,0,0,0.3);
+  border-radius: 10px;
 }
 
 /* Sections */
 section {
   width: 95%;
-  max-width: 450px; /* Telefon ucun optimal */
+  max-width: 450px;
   margin: 20px auto;
-  background: #3a3a3a;
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+  background: rgba(255,255,255,0.1);
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255,255,255,0.1);
+  transition: transform 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+
+section:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.7);
+}
+
+section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 5px;
+  height: 100%;
+  background: linear-gradient(to bottom, #ff4d4d, #ffcc00);
 }
 
 h2 {
+  color: #ffcc00;
+  margin-bottom: 15px;
+  padding-left: 15px;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+h2 i {
   color: #ff4d4d;
-  margin-bottom: 12px;
-  border-left: 4px solid #ff4d4d;
-  padding-left: 8px;
-  font-size: 18px;
 }
 
 ul {
@@ -88,160 +205,280 @@ ul {
 }
 
 ul li {
-  padding: 4px 0;
-  border-bottom: 1px dashed #777;
-  font-size: 14px;
+  padding: 8px 0;
+  border-bottom: 1px dashed rgba(255,255,255,0.3);
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+ul li i {
+  color: #ffcc00;
+  width: 20px;
 }
 
 .star {
-  margin-top: 12px;
-  font-size: 16px;
+  margin-top: 15px;
+  font-size: 18px;
   font-weight: 700;
-  color: #ff3333;
+  color: #ffcc00;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  background: rgba(255,77,77,0.1);
+  border-radius: 8px;
 }
 
 .price {
   font-weight: bold;
-  margin-top: 3px;
-  font-size: 14px;
+  margin-top: 5px;
+  font-size: 16px;
+  color: #33ff33;
+  display: block;
+  padding: 5px 10px;
+  background: rgba(51,255,51,0.1);
+  border-radius: 5px;
+  margin-left: 30px;
 }
 
 .gallery {
   display: grid;
-  direction: rtl; /* sagdan sola */
+  direction: rtl;
   grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-  gap: 8px;
+  gap: 10px;
   margin-bottom: 15px;
 }
 
 .gallery .img-box {
   width: 100%;
   height: 100px;
-  background: #555;
+  background: rgba(255,255,255,0.1);
   border-radius: 8px;
-  border: 1px solid #777;
+  border: 1px solid rgba(255,255,255,0.2);
   display: flex;
   align-items: center;
   justify-content: center;
   color: #ccc;
   font-size: 12px;
   text-align: center;
+  transition: all 0.3s;
+  overflow: hidden;
+}
+
+.gallery .img-box:hover {
+  transform: scale(1.05);
+  border-color: #ffcc00;
+  box-shadow: 0 0 10px rgba(255,204,0,0.5);
+}
+
+.gallery .img-box i {
+  font-size: 30px;
+  color: #ffcc00;
+}
+
+/* Floating decorations */
+.decoration {
+  position: fixed;
+  font-size: 24px;
+  z-index: 9998;
+  opacity: 0.7;
+  animation: float 15s infinite linear;
+}
+
+@keyframes float {
+  0% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(180deg); }
+  100% { transform: translateY(0) rotate(360deg); }
 }
 
 footer {
   text-align: center;
-  padding: 15px;
+  padding: 20px;
   color: #bbb;
-  font-size: 12px;
+  font-size: 14px;
+  background: rgba(0,0,0,0.5);
+  margin-top: 30px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+footer ul {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin: 15px 0;
+}
+
+footer ul li {
+  border: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+footer i {
+  color: #ff4d4d;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .music-player {
+    top: 10px;
+    right: 10px;
+    padding: 8px 12px;
+  }
+  
+  .music-title {
+    display: none;
+  }
+  
+  header h1 {
+    font-size: 2rem;
+  }
+  
+  section {
+    width: 90%;
+    padding: 20px;
+  }
 }
 </style>
 </head>
 <body>
 
+<!-- Music Player -->
+<div class="music-player">
+  <button class="music-btn" id="playBtn">
+    <i class="fas fa-play"></i>
+  </button>
+  <span class="music-title">Yeni il musiqisi</span>
+  <button class="music-btn" id="volumeBtn">
+    <i class="fas fa-volume-up"></i>
+  </button>
+</div>
+
+<!-- Decorative floating icons -->
+<div class="decoration" style="top:10%; left:5%; animation-delay: 0s;"><i class="fas fa-star"></i></div>
+<div class="decoration" style="top:15%; right:8%; animation-delay: 1s;"><i class="fas fa-gift"></i></div>
+<div class="decoration" style="top:70%; left:7%; animation-delay: 2s;"><i class="fas fa-music"></i></div>
+<div class="decoration" style="top:80%; right:5%; animation-delay: 3s;"><i class="fas fa-glass-cheers"></i></div>
+
 <header>
-  <!-- Saxta Baba s?kli -->
-  <img src="image/snow.jpg" alt="Saxta Baba">
-  <h1> My Way Village Hotel Qala Gecəsi Paketləri</h1>
-  <h1>31 Dekabr-2 Yanvar</h1>
-  <p> Yeni il gecəsi üçün xüsusi proqram və zəngin menyu (şam yeməyi hər iki gün üçün daxildir)  </p>
+  <img src="image/snow.jpg" alt="My Way Hotel">
+  <h1>My Way Village Hotel Qala Gecəsi Paketləri</h1>
+  <h1><i class="fas fa-calendar-alt"></i> 31 Dekabr - 2 Yanvar</h1>
+  <p><i class="fas fa-utensils"></i> Yeni il gecəsi üçün xüsusi proqram və zəngin menyu (şam yeməyi hər iki gün üçün daxildir)</p>
 </header>
 
 <!-- Fireworks canvas -->
 <canvas id="fireworks"></canvas>
 
 <section>
-  <h2>Otaq Paketləri</h2>
-  <div class="star">Standart Kotteclər  2 nəfərlik </div>
+  <h2><i class="fas fa-bed"></i> Otaq Paketləri</h2>
+  <div class="star"><i class="fas fa-home"></i> Standart Kotteclər 2 nəfərlik</div>
   <ul>
-    <li>Səhər yeməyi + Qala gecəsi + Sauna</li>
-    <li class="price">3 gün 2 geсэ  900 AZN</li>
-    <li class="price"></li>
+    <li><i class="fas fa-check"></i>Səhər yeməyi + Qala gecəsi + Sauna</li>
+    <li><i class="fas fa-check"></i>Wi-Fi və park yeri</li>
+    <li class="price">3 gün 2 gecə: 900 AZN</li>
   </ul>
 
-  <div class="star"> Dublex Kotteclər  2 nəfərlik</div>
+  <div class="star"><i class="fas fa-building"></i> Dublex Kotteclər 2 nəfərlik</div>
   <ul>
-    <li>Səhər yeməyi + Qala gecəsi + Sauna</li>
-    <li class="price">3 gün 2 geсэ   1000 AZN</li>
-    <li class="price"></li>
+    <li><i class="fas fa-check"></i>Səhər yeməyi + Qala gecəsi + Sauna</li>
+    <li><i class="fas fa-check"></i>Wi-Fi, park yeri və mini bar</li>
+    <li class="price">3 gün 2 gecə: 1000 AZN</li>
   </ul>
 
-  <div class="star"> Family Kotteclər  4 nəfərlik</div>
+  <div class="star"><i class="fas fa-users"></i> Family Kotteclər 4 nəfərlik</div>
   <ul>
-    <li>Səhər yeməyi + Qala gecəsi + Sauna</li>
-    <li class="price">3 gün 2 geсэ   1500 AZN</li>
-    <li class="price"></li>
-  </ul>
-</section>
-
-<section>
-  <h2> Soyuq Qəlyanaltılar</h2>
-  <div class="gallery">
-    
-    
-    
- </div>
-  <ul>
-    <li>Pendir assorti</li>
-    <li>Pomidor, xiyar, göyərti</li>
-    <li>Turşu assorti</li>
-    <li>Ət assorti</li>
-    <li>Blinçik (ət ilə)</li>
-    <li>Paytaxt salatı</li>
-    <li>Manqal salatı</li>
-    <li>Mimoza salatı</li>
-    <li>Albalı salatı</li>
-    <li>Suxarılanmış badımcan</li>
-    <li>Qırmızı ikra</li>
+    <li><i class="fas fa-check"></i>Səhər yeməyi + Qala gecəsi + Sauna</li>
+    <li><i class="fas fa-check"></i>Wi-Fi, park yeri, mini bar və uşaq otağı</li>
+    <li class="price">3 gün 2 gecə: 1500 AZN</li>
   </ul>
 </section>
 
 <section>
-  <h2>Isti Qəlyanaltı</h2>
+  <h2><i class="fas fa-snowflake"></i> Soyuq Qəlyanaltılar</h2>
   <div class="gallery">
-    
+    <div class="img-box"><i class="fas fa-cheese"></i></div>
+    <div class="img-box"><i class="fas fa-carrot"></i></div>
+    <div class="img-box"><i class="fas fa-drumstick-bite"></i></div>
+    <div class="img-box"><i class="fas fa-leaf"></i></div>
   </div>
   <ul>
-    <li>Yarpaq dolması</li>
+    <li><i class="fas fa-circle"></i>Pendir assorti</li>
+    <li><i class="fas fa-circle"></i>Pomidor, xiyar, göyərti</li>
+    <li><i class="fas fa-circle"></i>Turşu assorti</li>
+    <li><i class="fas fa-circle"></i>Ət assorti</li>
+    <li><i class="fas fa-circle"></i>Blinçik (ət ilə)</li>
+    <li><i class="fas fa-circle"></i>Paytaxt salatı</li>
+    <li><i class="fas fa-circle"></i>Manqal salatı</li>
+    <li><i class="fas fa-circle"></i>Mimoza salatı</li>
+    <li><i class="fas fa-circle"></i>Albalı salatı</li>
+    <li><i class="fas fa-circle"></i>Suxarılanmış badımcan</li>
+    <li><i class="fas fa-circle"></i>Qırmızı ikra</li>
   </ul>
 </section>
 
 <section>
-  <h2> Isti Yeməklər</h2>
+  <h2><i class="fas fa-fire"></i> İsti Qəlyanaltı</h2>
   <div class="gallery">
-   
+    <div class="img-box"><i class="fas fa-drumstick-bite"></i></div>
   </div>
   <ul>
-    <li>Lülə kabab</li>
-    <li>Tikə kabab</li>
-    <li>Toyuq kababə</li>
-    <li>Hinduşka kababə</li>
-    <li>Tərəvəz kababı</li>
-    <li>Kartof quyruq</li>
-    <li>Turşu qovurmalı plov</li>
+    <li><i class="fas fa-circle"></i>Yarpaq dolması</li>
+    <li><i class="fas fa-circle"></i>Qəndabçalan</li>
+    <li><i class="fas fa-circle"></i>Badımcan dolması</li>
   </ul>
 </section>
 
 <section>
-  <h2> Içkilər</h2>
+  <h2><i class="fas fa-utensils"></i> İsti Yeməklər</h2>
+  <div class="gallery">
+    <div class="img-box"><i class="fas fa-fire"></i></div>
+    <div class="img-box"><i class="fas fa-drumstick-bite"></i></div>
+    <div class="img-box"><i class="fas fa-carrot"></i></div>
+  </div>
   <ul>
-    <li>Qazlı və qazsız su</li>
-    <li>Kompot</li>
-    <li>Limonad</li>
-    <li>Coca-Cola</li>
-    <li>Şampan, şərab və ya araq</li>
+    <li><i class="fas fa-circle"></i>Lülə kabab</li>
+    <li><i class="fas fa-circle"></i>Tikə kabab</li>
+    <li><i class="fas fa-circle"></i>Toyuq kababə</li>
+    <li><i class="fas fa-circle"></i>Hinduşka kababə</li>
+    <li><i class="fas fa-circle"></i>Tərəvəz kababı</li>
+    <li><i class="fas fa-circle"></i>Kartof quyruq</li>
+    <li><i class="fas fa-circle"></i>Turşu qovurmalı plov</li>
   </ul>
 </section>
 
 <section>
-  <h2> Desert</h2>
+  <h2><i class="fas fa-glass-cheers"></i> İçkilər</h2>
   <ul>
-    <li>Meyvə assorti</li>
-    <li>Çay və mürəbbə</li>
+    <li><i class="fas fa-wine-bottle"></i>Qazlı və qazsız su</li>
+    <li><i class="fas fa-glass-whiskey"></i>Kompot</li>
+    <li><i class="fas fa-cocktail"></i>Limonad</li>
+    <li><i class="fas fa-beer"></i>Coca-Cola</li>
+    <li><i class="fas fa-wine-glass-alt"></i>Şampan, şərab və ya araq</li>
+  </ul>
+</section>
+
+<section>
+  <h2><i class="fas fa-birthday-cake"></i> Desert</h2>
+  <ul>
+    <li><i class="fas fa-apple-alt"></i>Meyvə assorti</li>
+    <li><i class="fas fa-mug-hot"></i>Çay və mürəbbə</li>
+    <li><i class="fas fa-ice-cream"></i>Dondurma</li>
   </ul>
 </section>
 
 <footer>
-  2025 My Way Hotel Village Yeni il Qala Gecəsi<li>Tural Mammadli</li><li>Sayt müəllif hüquqları ilə qorunur </li><li>Tel:+994509911322</li>
+  <p><i class="fas fa-copyright"></i> 2025 My Way Hotel Village Yeni il Qala Gecəsi</p>
+  <ul>
+    <li><i class="fas fa-user"></i>Tural Mammadli</li>
+    <li><i class="fas fa-phone"></i>Tel: +994 50 991 13 22</li>
+    <li><i class="fas fa-map-marker-alt"></i>Qobustan, My Way Village</li>
+  </ul>
+  <p><i class="fas fa-shield-alt"></i> Sayt müəllif hüquqları ilə qorunur</p>
 </footer>
 
 <script>
@@ -254,11 +491,12 @@ for (let i=0;i<maxFlakes;i++){
   flake.style.fontSize = 10 + Math.random()*10 + "px";
   flake.style.opacity = Math.random();
   flake.style.animationDuration = 5 + Math.random()*5 + "s";
-  flake.innerHTML = "&#10052;";
+  flake.style.animationDelay = Math.random()*5 + "s";
+  flake.innerHTML = "❄";
   document.body.appendChild(flake);
 }
 
-// Fireworks
+// Fireworks - daha yaxşı effekt
 const canvas = document.getElementById('fireworks');
 const ctx = canvas.getContext('2d');
 canvas.width = window.innerWidth;
@@ -267,47 +505,112 @@ canvas.height = window.innerHeight;
 class Particle {
   constructor(x,y,color){
     this.x=x; this.y=y; this.color=color;
-    this.vx=(Math.random()-0.5)*6;
-    this.vy=(Math.random()-0.5)*6;
-    this.alpha=1; this.size=Math.random()*3+1;
+    this.vx=(Math.random()-0.5)*8;
+    this.vy=(Math.random()-0.5)*8;
+    this.alpha=1; 
+    this.size=Math.random()*4+2;
+    this.gravity = 0.05;
+    this.fade = Math.random()*0.03+0.02;
   }
-  update(){ this.x+=this.vx; this.y+=this.vy; this.alpha-=0.02; }
-  draw(){ ctx.globalAlpha=this.alpha; ctx.fillStyle=this.color; ctx.beginPath();
-    ctx.arc(this.x,this.y,this.size,0,2*Math.PI); ctx.fill(); }
+  update(){ 
+    this.vy += this.gravity;
+    this.x+=this.vx; 
+    this.y+=this.vy; 
+    this.alpha-=this.fade; 
+    this.size *= 0.99;
+  }
+  draw(){ 
+    ctx.globalAlpha=this.alpha; 
+    ctx.fillStyle=this.color; 
+    ctx.beginPath();
+    ctx.arc(this.x,this.y,this.size,0,2*Math.PI); 
+    ctx.fill(); 
+  }
 }
 
 let particles=[];
 function spawnFirework(){
   const x=Math.random()*canvas.width;
   const y=Math.random()*canvas.height/2;
-  const colors=["#ff4d4d","#ffcc00","#ffffff","#33ff33","#33ccff"];
-  for(let i=0;i<50;i++){
-    particles.push(new Particle(x,y,colors[Math.floor(Math.random()*colors.length)]));
+  const colors=["#ff4d4d","#ffcc00","#ffffff","#33ff33","#33ccff","#ff33cc"];
+  const color = colors[Math.floor(Math.random()*colors.length)];
+  
+  // Daha çox partikul
+  for(let i=0;i<80;i++){
+    particles.push(new Particle(x,y,color));
   }
 }
 
 function animate(){
-  ctx.clearRect(0,0,canvas.width,canvas.height); // Fireworks s?ffaf saxlay?r
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  
+  // Arxa plan parıltısı
+  ctx.fillStyle = 'rgba(0,0,0,0.1)';
+  ctx.fillRect(0,0,canvas.width,canvas.height);
+  
   for(let i=particles.length-1;i>=0;i--){
     particles[i].update();
     particles[i].draw();
-    if(particles[i].alpha<=0) particles.splice(i,1);
+    if(particles[i].alpha<=0 || particles[i].size<=0.5) particles.splice(i,1);
   }
   requestAnimationFrame(animate);
 }
-setInterval(spawnFirework,1500);
+
+// Daha tez-tez atəşfəşanlıq
+setInterval(spawnFirework,800);
 animate();
+
+// Canlı Musiqi
+const audio = new Audio('https://assets.mixkit.co/music/preview/mixkit-happy-new-year-2023-1133.mp3');
+audio.loop = true;
+audio.volume = 0.5;
+
+const playBtn = document.getElementById('playBtn');
+const volumeBtn = document.getElementById('volumeBtn');
+let isPlaying = false;
+let isMuted = false;
+
+playBtn.addEventListener('click', function() {
+  if(isPlaying) {
+    audio.pause();
+    playBtn.innerHTML = '<i class="fas fa-play"></i>';
+  } else {
+    audio.play().catch(e => console.log("Audio play failed:", e));
+    playBtn.innerHTML = '<i class="fas fa-pause"></i>';
+  }
+  isPlaying = !isPlaying;
+});
+
+volumeBtn.addEventListener('click', function() {
+  if(isMuted) {
+    audio.volume = 0.5;
+    volumeBtn.innerHTML = '<i class="fas fa-volume-up"></i>';
+  } else {
+    audio.volume = 0;
+    volumeBtn.innerHTML = '<i class="fas fa-volume-mute"></i>';
+  }
+  isMuted = !isMuted;
+});
+
+// Tıklandığında konfet efekti
+document.addEventListener('click', function(e) {
+  if(e.target.tagName === 'BUTTON') return;
+  
+  const colors = ["#ff4d4d","#ffcc00","#33ff33","#33ccff"];
+  for(let i=0;i<20;i++){
+    const p = new Particle(e.clientX, e.clientY, colors[Math.floor(Math.random()*colors.length)]);
+    p.vx = (Math.random()-0.5)*10;
+    p.vy = (Math.random()-0.5)*10;
+    particles.push(p);
+  }
+});
+
+// Ekran yeniləndiyində canvas'ı yenilə
+window.addEventListener('resize', function() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+});
 </script>
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
